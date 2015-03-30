@@ -65,5 +65,23 @@ def issubset(set1, set2):
 
 print "Is s3 a subset of s2?"
 print issubset(s3, s2)
+print s3.issubset(s2)
 print "Is s4 a subset of s2?"
 print issubset(s4, s2)
+
+
+pythonset = set("Python")
+pythonset.update(["i"])
+print pythonset
+
+"""
+Create a set with the letters in 'Python' and add 'i' to the set.
+Create a frozenset with the letters in 'marathon'
+display the union and intersection of the two sets.
+"""
+
+marathonset = frozenset('marathon')
+print "sets combined:"
+print pythonset.union(marathonset)
+print "common letters:"
+print pythonset.intersection(marathonset)
