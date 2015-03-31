@@ -2,26 +2,49 @@
 
 # add note when safe_input.py completed
 
-"""
-Using all you've learned so far, complete your mailroom program
-according to the pseudocode and flow chart you created last session.
-use dicts where appropriate
-see if you can use a dict to switch between the users selections
-Try to use a dict and the .format() method to do the letter as one
-big template – rather than building up a big string in parts.
-For extra fun, see if you can use a file to preserve the donation list
-and changes made to it while the program is running.
-"""
-MYDICT = {"mary": 50, "josh": 50, "cassie": 34}
+d = {"mary": 50, "josh": 50, "cassie": 34}
 
-print MYDICT
+print d
+d["mary"] = 100
+print d
 
+# ok, this method overwrites the existing donation amt. how can I add an amt?
+
+d["mary"] = [d["mary"], 50]
+print d
+print d.keys()
+print d["mary"]
+print d["mary"][0]
+print d["mary"][1]
+
+# now I can add an amt & create a tuple that I can then call via place number.
+# let's make this a function
+
+
+def addamt(name, dict, amt):
+    for key, value in dict.items():
+        if key == name:
+            dict[key] = value.append(amt)
+        elif name not in dict.keys():
+            dict[name] = [amt]
+    return dict
+
+addamt("mary", d, 45)
+addamt("OC", d, 1000)
+addamt("josh", d, 56)
+print d
+
+print d["mary"][0]
+print d["mary"][1]
+
+# try dict in dict?
+# try list in list?
 
 """
 def sendletter(name, dict):
-    if name in MYDICT:
+    if name in dict:
         # proceed
-    elif name not in MYDICT:
+    elif name not in d:
         # add it
 
 def mainmenu():
@@ -29,7 +52,8 @@ def mainmenu():
                        " 'CREATE' a report, or 'QUIT'?")
     while action.upper() != "QUIT":
         if action.upper() == "SEND":
-            action = raw_input("Please enter a full name, 'LIST' for options, or 'MENU' to go back")
+            action = raw_input("Please enter a full name, 'LIST' for options,"+
+                               " or 'MENU' to go back")
             while action.upper() != "MENU":
                 sendletter(action)
             else:
@@ -45,15 +69,16 @@ if action == SEND:
 
 
 
-        if name == “MENU”:
+        if name == "MENU"":
 
             go back to action prompt
 
-        if name == “LIST”:
+        if name == "LIST"":
 
             print donorlist.keys #names
 
-            name = raw_input(“Please enter a name from the list, or type a new one to add”)
+            name = raw_input("Please enter a name from the list,
+                or type a new one to add"")
 
         while name not in donorlist.keys:
 
@@ -71,11 +96,15 @@ if action == SEND:
 
                 ask for name.value again
 
-            add (name,value) to donorlist #how to add multiple donations to one user?
+            add (name,value) to donorlist
+            #how to add multiple donations to one user?
 
     def createletter(name,value):
 
-        print “Dear %n, thank you for your generous donation of %v. We appreciate your support of our mission, which enables us to provide essential services to hundreds of Seattle families. Sincerely, do great inc.” %n name %v value
+        print "Dear %n, thank you for your generous donation of %v.
+        We appreciate your support of our mission, which enables us to provide
+        essential services to hundreds of Seattle families.
+        Sincerely, do great inc."" %n name %v value
 
     createletter(name,value)
 
@@ -87,9 +116,11 @@ if action == create:
 
         sort donorlist by donation amount
 
-        print donorlist.keys, sum(donorlist.values), count(donorlist.values) and average(donorlist.values)
+        print donorlist.keys, sum(donorlist.values), count(donorlist.values)
+         and average(donorlist.values)
 
     # return to main menu
 
-    # action = raw_input(“Would you like to SEND a thank you note, CREATE a report, or QUIT?”)
+    # action = raw_input("Would you like to SEND a thank you note,
+        CREATE a report, or QUIT?")
 """
