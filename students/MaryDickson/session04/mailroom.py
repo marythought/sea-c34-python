@@ -2,7 +2,7 @@
 
 # add note when safe_input.py completed
 
-d = {"mary": 50, "josh": 50, "cassie": 34}
+d = {"mary": [50], "josh": [50], "cassie": [34]}
 
 print d
 d["mary"] = 100
@@ -14,7 +14,9 @@ d["mary"] = [d["mary"], 50]
 print d
 print d.keys()
 print d["mary"]
+print type(d["mary"])
 print d["mary"][0]
+print type(d["mary"][0])
 print d["mary"][1]
 
 # now I can add an amt & create a tuple that I can then call via place number.
@@ -24,7 +26,7 @@ print d["mary"][1]
 def addamt(name, dict, amt):
     for key, value in dict.items():
         if key == name:
-            dict[key] = value.append(amt)
+            dict[key] = dict[key] + [amt]
         elif name not in dict.keys():
             dict[name] = [amt]
     return dict
@@ -37,8 +39,8 @@ print d
 print d["mary"][0]
 print d["mary"][1]
 
-# try dict in dict?
-# try list in list?
+# SO BEAUTIFUL DO NOT TOUCH.
+
 
 """
 def sendletter(name, dict):
