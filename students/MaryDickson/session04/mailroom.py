@@ -122,4 +122,5 @@ def mainmenu():
         mainmenu()
 
 
-mainmenu()
+if __name__ == "__main__":
+    mainmenu()
