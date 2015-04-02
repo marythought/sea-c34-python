@@ -13,6 +13,8 @@ def count_evens(nums):
 
 """
 
+# one way to do it, label and count
+
 
 def count_evens(nums):
     return[("odd", "even")[i % 2 == 0] for i in nums].count("even")
@@ -20,3 +22,13 @@ def count_evens(nums):
 print count_evens([2, 1, 2, 3, 4])
 print count_evens([2, 2, 0])
 print count_evens([1, 3, 5])
+
+# here's another way to do it, positive == 1 and then sum:
+
+
+def count_evens2(nums):
+    return sum([int(i % 2 == 0) for i in nums])
+
+print count_evens2([2, 1, 2, 3, 4])
+print count_evens2([2, 2, 0])
+print count_evens2([1, 3, 5])
