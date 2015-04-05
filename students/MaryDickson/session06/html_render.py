@@ -19,9 +19,8 @@ class Element(object):
         self.text = ""
 
     def append(self, text):
-        self.text = str(text)
-        print text
-        self.text += "\n"+text
+        self.ind = 4*" "
+        self.text += self.ind+text+"\n"
 
     def render(self, outfile):
         x = "\n<>" + "\n" + str(self.text) + "\n</>"
