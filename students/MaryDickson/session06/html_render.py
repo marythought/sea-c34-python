@@ -9,20 +9,51 @@ Python class example.
 # Fill it all in here.
 
 class Element(object):
-    # tag = ??
-    def __init__(self, name="element"):
+    def __init__(self, name=""):
         # Initialize a page element
         self.name = name
         # some other stuff:
-        self.open = "<" + str(name) + ">"
-        self.close = "</" + str(name) + ">"
-        self.text = ""
+        self.tagopen = "<" + str(name) + ">"
+        self.tagclose = "</" + str(name) + ">"
+        self.text = []
+        # self.ind = " "
 
     def append(self, text):
-        self.ind = 4*" "
-        self.text += self.ind+text+"\n"
+        self.text.append(text+"\n")
 
-    def render(self, outfile):
+    def render(self, outfile, ind =" "):
+        #move tagopen close etc down here
         x = "\n<>" + "\n" + str(self.text) + "\n</>"
         outfile.write(x)
+
+
+class Html(Element):
+    def __init__(self, name="body", ind=0):
+        self.tagopen = "<" + str(name) + ">"
+        self.tagclose = "</" + str(name) + ">"
+        self.ind = ind*" "
+        header = "<!DOCTYPE html>"
+
+    def append(self, text):
+        self.text += self.tagopen+self.ind+text+self.tagclose+"\n"
+
+    # something for the <DOC type tag>
+
+
+class Body(Element):
+    def __init__(self, name="body", ind=8):
+        self.tagopen = "<" + str(name) + ">"
+        self.tagclose = "</" + str(name) + ">"
+        self.ind = ind*" "
+
+    def append(self, text):
+        self.text += self.tagopen+self.ind+text+self.tagclose+"\n"
+
+
+class P(Element):
+    def __init__(self, name="p", ind=16):
+        self.name = name
+        self.tagopen = "<" + str(name) + ">"
+        self.tagclose = "</" + str(name) + ">"
+        self.ind = ind*" "
 
