@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import io
 
 # Question 1: can I use this for my bot text?
@@ -45,3 +46,6 @@ for i in secret_data[1:]:
     outfile.write(unicode(i))
 
 # it works!
+=======
+# questions about the files section in slides 4
+>>>>>>> task00

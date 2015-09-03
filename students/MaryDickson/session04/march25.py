@@ -37,6 +37,7 @@ first_three((4, 5, 6, 7, 8))
 # for each set of three words, if present, add them.
 # if tuple already present, increase the value by 1
 
+<<<<<<< HEAD
 import io
 
 f = io.open("marco-polo.txt", encoding="utf-8")
@@ -57,5 +58,7 @@ for (i, word in enumerate(words):
     d = 0
     if ((a,b,c) in D.keys()):
         d=D[(a,b,c)]
+=======
+>>>>>>> task00
 
 
